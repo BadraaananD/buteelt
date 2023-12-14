@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio management system</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    	@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
+    	.nav-link{
+		color: #ffffff !important;
+		font-weight: 500;
+		transition: all 200ms linear;
+		}
+		.nav-item:hover .nav-link{
+			color: #8167a9 !important;
+		}
+		.nav-item.active .nav-link{
+			color: #777 !important;
+		}
+		.nav-link {
+			position: relative;
+			padding: 5px 0 !important;
+			display: inline-block;
+		}
+		.nav-item:after{
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			content: '';
+			background-color: #8167a9;
+			opacity: 0;
+		    transition: all 200ms linear;
+		}
+		.nav-item:hover:after{
+			bottom: 0;
+			opacity: 1;
+		}
+		.nav-item.active:hover:after{
+			opacity: 0;
+		}
+		.nav-item{
+			position: relative;
+		    transition: all 200ms linear;
+		}
+    </style>
+</head>
+<body style="font-family:'Poppins', sans-serif">
+    <div class="navigation-wrap bg-dark start-header start-style" style="
+	opacity: 1;
+	transform: translateY(0);
+	padding: 11px 0;
+	box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);
+	-webkit-transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out;">
+        <div class="container">
+        	<div class="row">
+        		<div class="col-12">
+        			<nav class="navbar navbar-expand-md navbar-light">
+	        			<a class="navbar-brand" href="/index"><img th:src="@{/images/logo.png}" style="height: 24px;-webkit-transition : all 0.3s ease-out;transition : all 0.3s ease-out;" alt=""></a>	
+			            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			                <span class="navbar-toggler-icon"></span>
+			            </button>
+			            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			            	<ul class="navbar-nav ml-auto py-4 py-md-0">
+			            		
+			            		<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/index" style="color:white;">Home</a>
+								</li> 
+								
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/add-form" style="color:white;">Add portfolio</a>
+								</li>
+								
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/" style="color:white;">Sign out</a>
+								</li>
+								
+			            	</ul>
+			 			</div>
+        			</nav>
+        		</div>
+        	</div>
+        </div>
+    </div>
+	<center><h1>Edit portfolio</h1></center>
+ 	<div class="container mt-5"> 
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form th:action="@{/edit/}"  method="post">
+                    <input type="hidden" name="id" th:field="${por.id}"/>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" name="name"th:field="${por.name}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control" name="age" th:field="${por.price}">
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary btn-lg">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
